@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Log;
 
 class UserSiteAssignmentController extends Controller 
 {
@@ -39,6 +40,7 @@ class UserSiteAssignmentController extends Controller
         		break;
 
         	default: 
+        		Log::channel('slack')->debug('User id ' . $user_id . 'not found!');
         		return abort(404);
         }
 		return $result;
