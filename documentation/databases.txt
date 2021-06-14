@@ -39,14 +39,3 @@ UNIQUE KEY assignments (site_id, user_id)
 );
 
 Create Auth table/s for authentication
-
-
-
-Write out next steps you would take to turn this into a production application.
--conduct functional, regression, exploratory test on the app
--do penetration testing
--conduct load testing
--based off testing results, determine machine specs suitable for the app
--create a production deployment script
--explore ways to make the app scalable
-

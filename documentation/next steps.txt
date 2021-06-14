@@ -1,0 +1,7 @@
+-conduct functional, regression, exploratory test on the app
+-do penetration testing
+-conduct load testing
+-based off testing results, determine machine specs suitable for the app
+-create a production deployment script
+-explore ways to make the app scalable
+-implement daily rolling log file
