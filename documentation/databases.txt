@@ -1,0 +1,52 @@
+
+CREATE TABLE users (
+id INT(6) UNSIGNED AUTO_INCREMENT,
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE sites (
+id INT(6) UNSIGNED AUTO_INCREMENT,
+site_name VARCHAR(30) NOT NULL,
+longitude DECIMAL(10,8) NOT NULL,
+latitude DECIMAL(10,8) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE sign_ons (
+site_id INT(6) NOT NULL,
+user_id INT(6) NOT NULL,
+created_dt DATE,
+create_tm TIME,
+PRIMARY KEY (id),
+UNIQUE KEY (site_id, user_id)
+);
+
+
+CREATE TABLE site_assignments (
+id INT(6) UNSIGNED AUTO_INCREMENT,
+site_id INT(6) NOT NULL,
+user_id INT(6) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (id),
+UNIQUE KEY assignments (site_id, user_id)
+);
+
+Create Auth table/s for authentication
+
+
+
+Write out next steps you would take to turn this into a production application.
+-conduct functional, regression, exploratory test on the app
+-do penetration testing
+-conduct load testing
+-based off testing results, determine machine specs suitable for the app
+-create a production deployment script
+-explore ways to make the app scalable
+

@@ -1,0 +1,141 @@
+Show sign-ons
+Returns json data about sign-ons for a site id for the current day or a specific date.
+
+URL
+/api/sites/:site_id/sign-ons
+
+Method:
+GET
+
+URL Params
+Required:
+site_id=[integer]
+
+Data Params
+Required:
+user_id=[integer]
+
+Optional:
+date=[string]
+
+Success Response:
+Code: 200 OK
+Content: {
+  "site_id" : 1,
+  "site_name" : "Site One", 
+  "sign_ons": [
+     { "user_id" : 2, "name" : "John Doe", "timein" : "11 June 2021 09:00:40" },
+     { "user_id" : 3, "name" : "Jesse James", "timein" : "11 June 2021 09:01:40" },
+     ...
+  ]
+}
+
+Error Response:
+Code: 404 NOT FOUND
+Content: { error : "Site id doesn't exist" }
+
+OR
+
+Code: 403 FORBIDDEN
+Content: { error : "You are unauthorized to make this request." }
+
+Sample Call:
+$.ajax({
+  url: "/api/sites/1/sign-ons",
+  dataType: "json",
+  type : "GET",
+  data : { "user_id" : 1 },
+  success : function(r) {
+    console.log(r);
+  }
+});
+
+
+
+
+Show site assignments
+Returns json data about a user's site assignments.
+
+URL
+/api/users/:user_id/site-assignments
+
+Method:
+GET
+
+URL Params
+Required:
+user_id=[integer]
+
+Data Params
+None
+
+Success Response:
+Code: 200 OK
+Content: { 
+  "user_id" : 2,
+  "name" : "John Doe",
+  "site-assignments" : [
+    { "site_id": 1, "site_name": "Site One", "distance from site”: “100 meters” },
+    { "site_id": 2, "site_name": "Site Two", "distance from site”: “200 meters” },
+    ...
+  ] 
+}
+
+Error Response:
+Code: 404 NOT FOUND
+Content: { error : "User id doesn't exist" }
+
+
+Sample Call:
+$.ajax({
+  url: "/api/users/2/site-assignments",
+  dataType: "json",
+  type : "GET",
+  success : function(r) {
+    console.log(r);
+  }
+});
+
+
+
+
+Sign-on
+Sets a sign-on for a user.
+
+URL
+/api/users/:user_id/sign-ons
+
+Method:
+POST
+
+URL Params
+Required:
+user_id=[integer]
+
+Data Params
+Required:
+site_id=[integer]
+
+Success Response:
+Code: 200 OK
+Content: { "user_id" : 2, "name" : "John Doe", "site_id": 2, "time in": "11 June 2021 09:00" }
+
+Error Response:
+Code: 404 NOT FOUND
+Content: { error : "User doesn't exist" }
+
+OR
+
+Code: 404 NOT FOUND
+Content: { error : "Site id doesn't exist" }
+
+Sample Call:
+$.ajax({
+  url: "/api/users/2/sign-ons",
+  dataType: "json",
+  type : "POST",
+  data : { "site_id": 2 },
+  success : function(r) {
+    console.log(r);
+  }
+});
