@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//insert route grouping for authentication
+Route::get('users/{user_id}/site-assignments', 'App\Http\Controllers\UserSiteAssignmentController@show');
+
+Route::post('users/{user_id}/sign-ons', 'App\Http\Controllers\UserSignonController@store');
+
+Route::get('sites', 'App\Http\Controllers\SiteController@index');
+
+Route::get('sites/{site_id}/sign-ons', 'App\Http\Controllers\SiteSignonController@index');
+//end of route grouping
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
