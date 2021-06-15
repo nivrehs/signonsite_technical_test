@@ -12,8 +12,8 @@ class SiteController extends Controller
      */
     public function index() 
     {
-        $result[] = ['site_id' => 1, 'site_name' => "Site One"];
-        $result[] = ['site_id' => 2, 'site_name' => "Site Two"];
-        return $result;
+        $sites[] = ['site_id' => 1, 'site_name' => "Site One"];
+        $sites[] = ['site_id' => 2, 'site_name' => "Site Two"];
+        return ['sites' => $sites];
     }
 }
